@@ -6,7 +6,8 @@ const dbPort = config.get('dbConfig.port');
 
 mongoose.connect(`mongodb://localhost:${dbPort}/${dbName}`, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true
 })
 .then(() => {
     console.log('Application db connected...');
