@@ -1,0 +1,10 @@
+{
+    "name": "Node js Practice app --prod",
+    "application": {
+        "environment": "prod"
+    },
+    "dbConfig": {
+        "name": "rda_provinces",
+        "host": ""
+    }
+}

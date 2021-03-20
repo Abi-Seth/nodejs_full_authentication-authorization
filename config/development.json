@@ -1,0 +1,10 @@
+{
+    "name": "Node js Practice app --dev",
+    "application": {
+        "environment": "dev"
+    },
+    "dbConfig": {
+        "name": "rda_provinces",
+        "host": "localhost"
+    }
+}
