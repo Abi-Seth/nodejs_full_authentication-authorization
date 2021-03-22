@@ -1,5 +1,5 @@
 const { provinceModel, provinceValidation } = require('../models/provinces.model');
-const { isValidObjectId } = require('../utils/imports')
+const { isValidObjectId } = require('../utils/imports');
 
 exports.addProvince = async (req, res) => {
     try {
