@@ -45,7 +45,6 @@ exports.addProvince = async (req, res) => {
 exports.getAllProvinces = async (req, res) => {
     try {
         const provinces = await provinceModel.find()
-
         res.send({
             success: true,
             status: 200,
@@ -125,7 +124,7 @@ exports.updateProvince = async (req, res) => {
             province.provinceSize = provinceSize;
         
         if (provinceNumberOfDistricts)
-            province.provinceNumberOfDistricts = provinceNumberOfDistricts
+            province.provinceNumberOfDistricts = provinceNumberOfDistricts;
 
         await province.save()
         .then(() => {
