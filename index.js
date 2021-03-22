@@ -1,7 +1,7 @@
 const express = require('express');
 const config = require('config');
 const bodyParser = require('body-parser');
-const provinceRouter = require('./routers/provinces.router')
+const provinceRouter = require('./routers/provinces.router');
 
 require('./models/mongodb');
 
