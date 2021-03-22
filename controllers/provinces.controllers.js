@@ -113,7 +113,7 @@ exports.updateProvince = async (req, res) => {
 
         const { provinceName, provinceHead, provinceHeadEmail, provinceSize, provinceNumberOfDistricts } = req.body
         if (provinceName)
-            province.provinceName = provinceName
+            province.provinceName = provinceName;
         
         if (provinceHead)
             province.provinceHead = provinceHead
