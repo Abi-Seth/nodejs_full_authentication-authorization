@@ -122,7 +122,7 @@ exports.updateProvince = async (req, res) => {
             province.provinceHeadEmail = provinceHeadEmail;
             
         if (provinceSize)
-            province.provinceSize = provinceSize
+            province.provinceSize = provinceSize;
         
         if (provinceNumberOfDistricts)
             province.provinceNumberOfDistricts = provinceNumberOfDistricts
