@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Rwanda provinces!')
+    res.send('Welcome to the Rwanda provinces!');
 })
 
 app.use('/api/province/', provinceRouter);
