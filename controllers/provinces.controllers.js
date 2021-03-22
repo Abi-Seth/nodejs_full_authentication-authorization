@@ -116,7 +116,7 @@ exports.updateProvince = async (req, res) => {
             province.provinceName = provinceName;
         
         if (provinceHead)
-            province.provinceHead = provinceHead
+            province.provinceHead = provinceHead;
             
         if (provinceHeadEmail)
             province.provinceHeadEmail = provinceHeadEmail
