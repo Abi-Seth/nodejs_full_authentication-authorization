@@ -23,7 +23,7 @@ const provinceSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-}, { timestamps: true })
+}, { timestamps: true });
 
 exports.provinceValidation = (body) => {
     const validateProvinceSchema = Joi.object({
