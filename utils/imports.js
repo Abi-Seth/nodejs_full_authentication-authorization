@@ -5,4 +5,4 @@ const mongoose = require('mongoose');
  * @returns {boolean} true/false
  */ 
 
-exports.isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id)
+exports.isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
