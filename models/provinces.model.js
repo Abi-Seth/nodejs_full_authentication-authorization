@@ -9,7 +9,7 @@ const provinceSchema = new mongoose.Schema({
     },
     provinceHead: {
         type: String,
-        required: true,
+        required: true
     },
     provinceHeadEmail: {
         type: String,
