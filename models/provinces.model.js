@@ -13,7 +13,7 @@ const provinceSchema = new mongoose.Schema({
     },
     provinceHeadEmail: {
         type: String,
-        required: true,
+        required: true
     },
     provinceSize: {
         type: Number,
