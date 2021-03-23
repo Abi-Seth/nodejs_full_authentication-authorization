@@ -37,4 +37,3 @@ exports.provinceValidation = (body) => {
 }
 
 exports.provinceModel = mongoose.model('Province', provinceSchema);
-
