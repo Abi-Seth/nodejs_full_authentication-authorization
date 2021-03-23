@@ -20,5 +20,5 @@ const port = process.env.PORT || config.get('application.port');
 const password = process.env.DB_PASSWORD;
 
 app.listen(port, () => { 
-    console.log(`App running on port ${port}.`) 
+    console.log(`App running on port ${port}.`); 
 });
