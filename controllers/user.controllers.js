@@ -1,5 +1,5 @@
-const express = require('express');
 const { userModel, userValidation } = require('../models/user.model');
+const _ = require('lodash');
 
 exports.addUser = async (req, res) => {
     try {
