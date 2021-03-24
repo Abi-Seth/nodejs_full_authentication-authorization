@@ -1,5 +1,6 @@
 const { userModel, userValidation } = require('../models/user.model');
 const _ = require('lodash');
+const hashPassword = require('../utils/hash');
 
 exports.addUser = async (req, res) => {
     try {
