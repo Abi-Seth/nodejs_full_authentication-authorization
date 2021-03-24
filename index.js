@@ -2,7 +2,7 @@ const express = require('express');
 const config = require('config');
 const bodyParser = require('body-parser');
 const provinceRouter = require('./routers/provinces.router');
-const { application } = require('express');
+const userRouter = require('./routers/user.router');
 
 require('./models/mongodb');
 
@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/province/', provinceRouter);
+app.use('/api/user/', userRouter);
 
 if(!config.my_jwtPrivateKey) {
     console.error('FATAL ERROR: JwtPrivateKey is not defined!');
