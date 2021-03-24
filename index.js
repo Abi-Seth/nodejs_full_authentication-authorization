@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('config');
 const bodyParser = require('body-parser');
 const provinceRouter = require('./routers/provinces.router');
+const { application } = require('express');
 
 require('./models/mongodb');
 
@@ -15,6 +16,16 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/province/', provinceRouter);
+
+if(!config.my_jwtPrivateKey) {
+    console.error('FATAL ERROR: JwtPrivateKey is not defined!');
+    process.exit(-1);
+}
+
+if (!config.get(application.port)) {
+    console.error('FATAL ERROR: Application port is not defined!');
+    process.exit(-1);
+}
 
 const port = process.env.PORT || config.get('application.port');
 const password = process.env.DB_PASSWORD;
