@@ -13,6 +13,7 @@ function auth(req, res, next) {
 
     try {
         // const decoded = jwt.verify(token.split('Bearer ')[1], config.get('jwtPrivateKey'));
+        // req.user = decoded;
         jwt.verify(token.split(' ')[1], config.get('jwtPrivateKey'), (error, payload) => {
             req.user = payload;
 
