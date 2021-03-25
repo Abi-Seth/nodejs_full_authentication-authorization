@@ -18,12 +18,12 @@ app.get('/', (req, res) => {
 app.use('/api/province/', provinceRouter);
 app.use('/api/user/', userRouter);
 
-if(!config.my_jwtPrivateKey) {
+if(!config.get('jwtPrivateKey')) {
     console.error('FATAL ERROR: JwtPrivateKey is not defined!');
     process.exit(-1);
 }
 
-if (!config.get(application.port)) {
+if (!config.get('application.port')) {
     console.error('FATAL ERROR: Application port is not defined!');
     process.exit(-1);
 }

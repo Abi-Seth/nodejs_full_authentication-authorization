@@ -1,4 +1,5 @@
 {
     "name": "Node js Practice app",
-    "jwtPrivateKey": ""
+    "my_jwtPrivateKey": "124",
+    "app_port": 2020
 }
