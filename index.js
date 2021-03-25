@@ -3,6 +3,7 @@ const config = require('config');
 const bodyParser = require('body-parser');
 const provinceRouter = require('./routers/provinces.router');
 const userRouter = require('./routers/user.router');
+const authMiddleware = require('./middlewares/auth.middleware');
 
 require('./models/mongodb');
 
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to the Rwanda provinces!');
 })
 
-app.use('/api/province/', provinceRouter);
+app.use('/api/province/', authMiddleware, provinceRouter);
 app.use('/api/user/', userRouter);
 
 if(!config.get('jwtPrivateKey')) {
