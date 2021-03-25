@@ -11,7 +11,7 @@ exports.addUser = async (req, res) => {
             return res.send({
                 success: false,
                 status: 400,
-                message: error.details[0].message
+                message: validateUser.error.details[0].message
             }).status(400)
         }
 
@@ -25,7 +25,7 @@ exports.addUser = async (req, res) => {
             }).status(403)
         }
 
-        let newUser = new User(_.pick(user, ['Username', 'email', 'password', 'isAdmin']));
+        let newUser = await new userModel(_.pick(user, ['Username', 'email', 'password', 'isAdmin']));
         const hashedPassword = await hashPassword(newUser.password);
         newUser.password = hashedPassword;
 

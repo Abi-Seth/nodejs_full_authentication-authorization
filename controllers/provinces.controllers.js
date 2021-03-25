@@ -39,6 +39,7 @@ exports.addProvince = async (req, res) => {
             status: 400,
             message: err.message
         }).status(400)
+        console.log(err)
     }
 } 
 

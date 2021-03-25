@@ -15,3 +15,6 @@ mongoose.connect(`mongodb://localhost:${dbPort}/${dbName}`, {
 .catch((err) => {
     console.log(err);
 })
+
+require('./provinces.model');
+require('./user.model');

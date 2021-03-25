@@ -30,10 +30,10 @@ const userSchema = new mongoose.Schema({
 
 exports.userValidation = (body) => {
     const validateUserSchema = Joi.object({
-        Username:Joi.string().max(255).min(3).required(),
+        Username: Joi.string().max(255).min(3).required(),
         email: Joi.string().max(255).min(3).required().email(),
-        password:Joi.string().max(255).min(3).required(),
-        isAdmin:Joi.required()
+        password: Joi.string().max(255).min(3).required(),
+        isAdmin: Joi.required()
     })
     return validateUserSchema.validate(body);
 }
