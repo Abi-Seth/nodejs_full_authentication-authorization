@@ -45,7 +45,7 @@ exports.addProvince = async (req, res) => {
 
 exports.getAllProvinces = async (req, res) => {
     try {
-        const provinces = await provinceModel.find()
+        const provinces = await provinceModel.find().sort({ provinceName: 1 })
         res.send({
             success: true,
             status: 200,

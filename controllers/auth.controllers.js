@@ -31,14 +31,14 @@ exports.login = async (req, res) => {
                 message: 'Invalid email or password!'
             }).status(401)
         }
-
+        console.log(user);
         return res.send({
             success: true,
             status: 200,
             message: user.generateAuthToken()
         }).status(200)
 
-    } catch(err) {
+    } catch (err) {
         res.send({
             success: false,
             status: 400,
