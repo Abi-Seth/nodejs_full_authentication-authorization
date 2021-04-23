@@ -1,10 +1,10 @@
-const express = require('express');
 const config = require('config');
+const express = require('express');
 const bodyParser = require('body-parser');
-const provinceRouter = require('./routers/provinces.router');
 const userRouter = require('./routers/user.router');
-const authMiddleware = require('./middlewares/auth.middleware');
 const admin = require('./middlewares/admin.middleware');
+const provinceRouter = require('./routers/provinces.router');
+const authMiddleware = require('./middlewares/auth.middleware');
 
 require('./models/mongodb');
 
