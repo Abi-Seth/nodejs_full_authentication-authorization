@@ -1,6 +1,6 @@
 const config = require('config');
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express'); 
+// const bodyParser = require('body-parser');
 const userRouter = require('./routers/user.router');
 const admin = require('./middlewares/admin.middleware');
 const provinceRouter = require('./routers/provinces.router');
@@ -10,14 +10,17 @@ require('./models/mongodb');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Rwanda provinces!');
 })
 
-app.use('/api/province/', authMiddleware, admin , provinceRouter);
+app.use('/api/province/',[ authMiddleware, admin ], provinceRouter);
 app.use('/api/user/', userRouter);
 
 if(!config.get('jwtPrivateKey')) {
