@@ -1,10 +1,11 @@
 const config = require('config');
 const express = require('express'); 
-// const bodyParser = require('body-parser');
-const userRouter = require('./routers/user.router');
+//  const bodyParser = require('body-parser');
+
 const admin = require('./middlewares/admin.middleware');
-const provinceRouter = require('./routers/provinces.router');
+const {provinceRouter} = require('./routers/provinces.router');
 const authMiddleware = require('./middlewares/auth.middleware');
+const { userRouter } = require('./routers/user.router');
 
 require('./models/mongodb');
 
@@ -13,7 +14,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+// app.use(bodyParser());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
@@ -21,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/province/',[ authMiddleware, admin ], provinceRouter);
-app.use('/api/user/', userRouter);
+app.use('/api/user/',userRouter);
 
 if(!config.get('jwtPrivateKey')) {
     console.error('FATAL ERROR: JwtPrivateKey is not defined!');

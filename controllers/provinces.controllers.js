@@ -1,5 +1,10 @@
-const { provinceModel, provinceValidation } = require('../models/provinces.model');
-const { isValidObjectId } = require('../utils/imports');
+const {
+    provinceModel,
+    provinceValidation
+} = require('../models/provinces.model');
+const {
+    isValidObjectId
+} = require('../utils/imports');
 
 exports.addProvince = async (req, res) => {
     try {
@@ -8,8 +13,10 @@ exports.addProvince = async (req, res) => {
         const validProvince = await provinceValidation(province);
         if (validProvince.error)
             return res.status(400).send(validProvince.error.details[0].message);
-        
-        const duplicate = await provinceModel.findOne({ provinceName: province.provinceName });
+
+        const duplicate = await provinceModel.findOne({
+            provinceName: province.provinceName
+        });
         if (duplicate) {
             return res.send({
                 success: false,
@@ -21,19 +28,19 @@ exports.addProvince = async (req, res) => {
         const newProvince = await provinceModel(province);
 
         await newProvince.save()
-        .then(() => {
-            res.send({
-                success: true,
-                status: 201,
-                message: 'Province added successfully.',
-                newProvince
-            }).status(201)
-        })
-        .catch((err) => { 
-            res.send(err.message)
-        })
- 
-    }catch(err) {
+            .then(() => {
+                res.send({
+                    success: true,
+                    status: 201,
+                    message: 'Province added successfully.',
+                    newProvince
+                }).status(201)
+            })
+            .catch((err) => {
+                res.send(err.message)
+            })
+
+    } catch (err) {
         res.send({
             success: false,
             status: 400,
@@ -41,17 +48,19 @@ exports.addProvince = async (req, res) => {
         }).status(400)
         console.log(err)
     }
-} 
+}
 
 exports.getAllProvinces = async (req, res) => {
     try {
-        const provinces = await provinceModel.find().sort({ provinceName: 1 })
+        const provinces = await provinceModel.find().sort({
+            provinceName: 1
+        })
         res.send({
             success: true,
             status: 200,
             provinces
         }).status(200)
-    }catch(err) {
+    } catch (err) {
         res.send({
             success: false,
             status: 400,
@@ -73,14 +82,14 @@ exports.getProvinceById = async (req, res) => {
             }).status(200)
         }
 
-    }catch(err) {
+    } catch (err) {
         res.send({
             success: false,
             status: 406,
             message: 'Invalid id && ' + err.message
         }).status(406)
     }
-} 
+}
 
 exports.updateProvince = async (req, res) => {
     try {
@@ -111,40 +120,46 @@ exports.updateProvince = async (req, res) => {
             }).status(403)
         }
 
-        const { provinceName, provinceHead, provinceHeadEmail, provinceSize, provinceNumberOfDistricts } = req.body
+        const {
+            provinceName,
+            provinceHead,
+            provinceHeadEmail,
+            provinceSize,
+            provinceNumberOfDistricts
+        } = req.body
         if (provinceName)
             province.provinceName = provinceName;
-        
+
         if (provinceHead)
             province.provinceHead = provinceHead;
-            
+
         if (provinceHeadEmail)
             province.provinceHeadEmail = provinceHeadEmail;
-            
+
         if (provinceSize)
             province.provinceSize = provinceSize;
-        
+
         if (provinceNumberOfDistricts)
             province.provinceNumberOfDistricts = provinceNumberOfDistricts;
 
         await province.save()
-        .then(() => {
-            res.send({
-                success: true,
-                status: 200,
-                message: 'Province updated successfully',
-                province
-            }).status(200)
-        })
-        .catch((err) => {
-            res.send({
-                success: false,
-                status: 400,
-                message: err.message
-            }).status(400)
-        })
- 
-    } catch(err) {
+            .then(() => {
+                res.send({
+                    success: true,
+                    status: 200,
+                    message: 'Province updated successfully',
+                    province
+                }).status(200)
+            })
+            .catch((err) => {
+                res.send({
+                    success: false,
+                    status: 400,
+                    message: err.message
+                }).status(400)
+            })
+
+    } catch (err) {
         res.send({
             success: false,
             status: 406,
@@ -178,22 +193,22 @@ exports.deleteProvince = async (req, res) => {
         }
 
         await provinceModel.findByIdAndDelete(provinceId)
-        .then(() => {
-            res.send({
-                success: true,
-                status: 200,
-                message: 'Province deleted successfully'
-            }).status(200)
-        })
-        .catch((err) => {
-            res.send({
-                success: false,
-                status: 400,
-                message: err.message
-            }).status(400)
-        })
+            .then(() => {
+                res.send({
+                    success: true,
+                    status: 200,
+                    message: 'Province deleted successfully'
+                }).status(200)
+            })
+            .catch((err) => {
+                res.send({
+                    success: false,
+                    status: 400,
+                    message: err.message
+                }).status(400)
+            })
 
-    } catch(err) {
+    } catch (err) {
         res.send({
             success: false,
             status: 406,
